@@ -13,6 +13,7 @@ import { editUserAction } from "./actions/EditUser.action.ts";
 
 import CreateUser from "./routes/user/CreateUser.tsx";
 import { createUserAction } from "./actions/CreateUser.action.ts";
+import LoginForm from "./components/login/LoginForm.tsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
