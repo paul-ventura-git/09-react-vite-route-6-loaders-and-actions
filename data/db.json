@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Albus",
+      "lastName": "Dumbledoreh"
+    },
+    {
+      "id": 2,
+      "firstName": "Severus",
+      "lastName": "Snape"
+    },
+    {
+      "id": 1688571991306,
+      "firstName": "Minerva",
+      "lastName": "McGonnagal",
+      "intent": "save"
+    },
+    {
+      "id": 1717343718571,
+      "firstName": "Paul",
+      "lastName": "Ventura",
+      "intent": "save"
+    }
+  ]
+}
