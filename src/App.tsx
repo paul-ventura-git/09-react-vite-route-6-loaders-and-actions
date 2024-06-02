@@ -12,6 +12,7 @@ import LoginForm from "./components/login/LoginForm";
 import HomePage from "./routes/HomePage"
 
 function App() {
+  // Reading the "logged-in?" value
   return (
     <AuthProvider>
       <div>
@@ -20,7 +21,7 @@ function App() {
           <Outlet />
           <Routes>
             {/* Public routes */}
-            <Route path="/login" element={<LoginForm />} />
+            <Route path="/login" element={<AuthProvider><LoginForm /></AuthProvider>} />
 
             {/* Private route using PrivateRoute component */}
             <Route path="/" element={<PrivateRoute />}>
