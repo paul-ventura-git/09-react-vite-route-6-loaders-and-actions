@@ -3,13 +3,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import UsersList from "./components/user/UsersList.tsx";
 import { usersLoader } from "./loaders/Users.loader.ts";
-import EditUser from "./views/user/EditUser.tsx";
-import { editUserLoader } from "./views/user/EditUser.loader.ts";
-import { editUserAction } from "./views/user/EditUser.action.ts";
-import CreateUser from "./views/user/CreateUser.tsx";
-import { createUserAction } from "./views/user/CreateUser.action.ts";
+
+import EditUser from "./components/user/EditUser.tsx";
+import { editUserLoader } from "./loaders/EditUser.loader.ts";
+import { editUserAction } from "./actions/EditUser.action.ts";
+
+import CreateUser from "./components/user/CreateUser.tsx";
+import { createUserAction } from "./actions/CreateUser.action.ts";
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
-import { EditUserLoaderResponse } from "./EditUser.loader";
-import UserForm from "./components/UserForm";
+import { EditUserLoaderResponse } from "../../loaders/EditUser.loader";
+import UserForm from "./UserForm";
 
 const EditUser = () => {
   const { user } = useLoaderData() as EditUserLoaderResponse;
