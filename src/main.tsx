@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Users from "./views/user/Users.tsx";
-import { usersLoader } from "./views/user/Users.loader.ts";
+import UsersList from "./components/user/UsersList.tsx";
+import { usersLoader } from "./loaders/Users.loader.ts";
 import EditUser from "./views/user/EditUser.tsx";
 import { editUserLoader } from "./views/user/EditUser.loader.ts";
 import { editUserAction } from "./views/user/EditUser.action.ts";
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Users />,
+        element: <UsersList />,
         loader: usersLoader,
       },
       {
