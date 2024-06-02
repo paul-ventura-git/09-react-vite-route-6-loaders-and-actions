@@ -24,7 +24,7 @@ function App() {
 
             {/* Private route using PrivateRoute component */}
             <Route path="/" element={<PrivateRoute />}>
-              <Route path="/account" element={<HomePage />} />
+              <Route path="/home" element={<HomePage />} />
             </Route>
           </Routes>
         </Suspense>

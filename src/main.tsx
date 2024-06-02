@@ -14,6 +14,7 @@ import { editUserAction } from "./actions/EditUser.action.ts";
 import CreateUser from "./routes/user/CreateUser.tsx";
 import { createUserAction } from "./actions/CreateUser.action.ts";
 import LoginForm from "./components/login/LoginForm.tsx";
+import HomePage from "./routes/HomePage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginForm />,
+  },
+  {
+    path: "/home",
+    element: <HomePage />,
   }
 ]);
 
