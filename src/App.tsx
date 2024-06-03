@@ -21,7 +21,7 @@ function App() {
           <Outlet />
           <Routes>
             {/* Public routes */}
-            <Route path="/login" element={<AuthProvider><LoginForm /></AuthProvider>} />
+            <Route path="/login" element={<LoginForm />} />
 
             {/* Private route using PrivateRoute component */}
             <Route path="/" element={<PrivateRoute />}>

@@ -6,18 +6,33 @@ interface AuthContextProps {
   logoutUser: () => void;
 }
 
-const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+const AuthContext = createContext<AuthContextProps>({
+  isAuthenticated: false,
+  loginUser: () => {console.log("yay1")},
+  logoutUser: () => {console.log("yay2")}
+ });
+
+/**
+ * This is to "read" the CONTEXT VARIABLES
+ * @returns 
+ */
 export const useAuth = (): AuthContextProps => {
-  let context = useContext(AuthContext);
-  context = {isAuthenticated:true, loginUser: () => (console.log("yay1")), logoutUser: () => (console.log("yay2"))}
-  console.log(context); // undefined
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  
-  return context;
+  //console.log("Context: "+AuthContext+typeof(AuthContext))
+  //const context = useContext(AuthContext);
+  //context = {isAuthenticated:true, loginUser: () => (console.log("yay1")), logoutUser: () => (console.log("yay2"))}
+  //console.log(context); // undefined
+  //if (!context) {
+  //  throw new Error('useAuth must be used within an AuthProvider');
+  //}  
+  //return context;
+  return useContext(AuthContext);
 };
 
+/**
+ * This is to "apply" the functions, and read the context STATES
+ * @param param0 
+ * @returns 
+ */
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -35,8 +50,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   return (
     <AuthContext.Provider value={{ 
       isAuthenticated, 
-      loginUser, 
-      logoutUser }}>
+      loginUser: loginUser, 
+      logoutUser: logoutUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,19 +1,23 @@
 import React from 'react'
 
-import { AuthProvider, useAuth } from '../../auth/userContext';
+import { useAuth } from '../../auth/userContext';
 
 function LoginForm() {
   // Setting the "logged-in?" value
 
   const { loginUser, logoutUser } = useAuth();
 
+  const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    loginUser();
+    console.log("What happened?")
+  }
+
   return (
-    <AuthProvider>
-      <div>LoginForm
-        <button onClick={loginUser}>Log in</button>
-        <button onClick={logoutUser}>Log out</button>
-      </div>
-    </AuthProvider>
+    <div>LoginForm
+      <button onClick={handleSubmit}>Log in</button>
+      <button onClick={logoutUser}>Log out</button>
+    </div>
   )
 }
 
