@@ -3,7 +3,8 @@ import { Suspense } from "react";
 import './App.css'
 
 import { Outlet } from "react-router-dom";
-import { AuthProvider } from "./auth/userContext";
+//import { AuthProvider } from "./auth/userContext";
+import { ThemeProvider } from "./context/themeContext"
 
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './auth/PrivateRoute';
@@ -14,7 +15,7 @@ import HomePage from "./routes/HomePage"
 function App() {
   // Reading the "logged-in?" value
   return (
-    <AuthProvider>
+    <ThemeProvider>
       <div>
         <h1>Willkommen zurück, Leute.</h1>
         <Suspense fallback={<div>loading...</div>}>
@@ -30,7 +31,7 @@ function App() {
           </Routes>
         </Suspense>
       </div>
-    </AuthProvider>
+    </ThemeProvider>
   )
 }
 

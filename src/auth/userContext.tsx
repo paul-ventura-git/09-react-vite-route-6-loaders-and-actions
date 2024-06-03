@@ -18,9 +18,7 @@ const AuthContext = createContext<AuthContextProps>({
  */
 
 export const useAuth = (): AuthContextProps => {
-  //console.log("Context: "+AuthContext+typeof(AuthContext))
   //const context = useContext(AuthContext);
-  //context = {isAuthenticated:true, loginUser: () => (console.log("yay1")), logoutUser: () => (console.log("yay2"))}
   //console.log(context); // undefined
   //if (!context) {
   //  throw new Error('useAuth must be used within an AuthProvider');

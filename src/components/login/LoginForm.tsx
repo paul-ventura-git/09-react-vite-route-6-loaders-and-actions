@@ -1,24 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../context/themeContext';
 
-import { useAuth } from '../../auth/userContext';
-
-function LoginForm() {
-  // Setting the "logged-in?" value
-
-  const { loginUser, logoutUser } = useAuth();
-
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
-    loginUser();
-    console.log("What happened?")
+export const LoginForm: React.FC = () => {
+  const themeContext = useContext(ThemeContext);
+  const { currentTheme, toggleTheme } = useContext(ThemeContext);
+  console.log(currentTheme)
+  if (!themeContext) {
+    throw new Error('UserProfile must be used within a UserProvider');
   }
 
   return (
-    <div>LoginForm
-      <button onClick={handleSubmit}>Log in</button>
-      <button onClick={logoutUser}>Log out</button>
+    <div>
+      <p>Name: {themeContext.currentTheme}</p>
+      <p>Age: {themeContext.currentTheme}</p>
+      <button onClick={toggleTheme}>Update Theme</button>
     </div>
-  )
+  );
 }
 
 export default LoginForm
