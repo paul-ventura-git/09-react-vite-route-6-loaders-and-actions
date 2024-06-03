@@ -16,6 +16,7 @@ const AuthContext = createContext<AuthContextProps>({
  * This is to "read" the CONTEXT VARIABLES
  * @returns 
  */
+
 export const useAuth = (): AuthContextProps => {
   //console.log("Context: "+AuthContext+typeof(AuthContext))
   //const context = useContext(AuthContext);
@@ -28,6 +29,9 @@ export const useAuth = (): AuthContextProps => {
   return useContext(AuthContext);
 };
 
+export function useLoginContext() {
+  return useContext(AuthContext);
+}
 /**
  * This is to "apply" the functions, and read the context STATES
  * @param param0 
