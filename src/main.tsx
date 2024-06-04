@@ -15,7 +15,7 @@ import CreateUser from "./routes/user/CreateUser.tsx";
 import { createUserAction } from "./actions/CreateUser.action.ts";
 import LoginForm from "./components/login/LoginForm.tsx";
 import HomePage from "./routes/HomePage.tsx";
-
+import { LoginProvider } from './context/LoginContext'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,6 +51,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <LoginProvider>
+      <RouterProvider router={router} />
+    </LoginProvider>
   </React.StrictMode>
 );
