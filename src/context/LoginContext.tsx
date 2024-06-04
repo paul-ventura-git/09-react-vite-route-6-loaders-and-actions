@@ -20,7 +20,7 @@ export const useLoginContext = () => {
 };
 
 export const LoginProvider = ({ children }: PropsWithChildren<{}>) => {
-  const value = useState("");
+  const value = useState("default");
   console.log(value)
   return (
     <LoginContext.Provider 

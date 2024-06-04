@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Form } from "react-router-dom";
-//import { useLoginContext } from "../../context/LoginContext";
+import { useLoginContext } from "../../context/LoginContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  //const [user, setUser] = useLoginContext();
-  //console.log(user);
+  const [user, setUser] = useLoginContext();
+  console.log(user);
 
   const [inputs, setInputs] = useState({username: "", password: ""});
 
@@ -52,7 +52,7 @@ export const LoginForm = () => {
         //if (inputs.username===elem.email){
           alert("Logged in successfully!");
           navigate("/home");
-          //setUser(elem.email);       
+          setUser(elem.email);       
           return true   
         }        
       })
