@@ -1,37 +1,26 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/ban-types */
+import { createContext, useContext } from "react";
+import { PropsWithChildren, useState } from "react";
 
-// Define the shape of the context data
-interface ThemeContextType {
-  currentTheme: string;
-  toggleTheme: () => void;
-}
+type ContextType = [string, (theme: string) => void];
+ 
+export const ThemeContext = createContext<ContextType | undefined>(undefined);
 
-interface Props {
-  children: React.ReactNode;
-}
+export const useThemeContext = () => {
+  const context = useContext(ThemeContext);
+ 
+  if (!context) {
+    throw new Error("useThemeContext must be used inside the ThemeProvider");
+  }
+ 
+  return context;
+};
 
-// Create the context with a default value
-export const ThemeContext = React.createContext<ThemeContextType>({
-  currentTheme: 'light',
-  toggleTheme: () => {},
-});
-
-// Create a provider component
-export const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState('light');
-
-  const toggleTheme1 = () => {
-    console.log("It fucking works!")
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
+export const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
+  const value = useState("");
+ 
   return (
-    <ThemeContext.Provider value={{ 
-      currentTheme: theme, 
-      toggleTheme: toggleTheme1 }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 
-export default ThemeProvider

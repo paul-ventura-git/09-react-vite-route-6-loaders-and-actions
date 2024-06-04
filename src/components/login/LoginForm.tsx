@@ -1,19 +1,14 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../context/themeContext';
+import { useLoginContext } from "../../context/LoginContext";
 
 export const LoginForm: React.FC = () => {
-  const themeContext = useContext(ThemeContext);
-  const { currentTheme, toggleTheme } = useContext(ThemeContext);
-  console.log(currentTheme)
-  if (!themeContext) {
-    throw new Error('UserProfile must be used within a UserProvider');
-  }
+  const [user, setUser] = useLoginContext();
+  console.log(user)
 
   return (
     <div>
-      <p>Name: {themeContext.currentTheme}</p>
-      <p>Age: {themeContext.currentTheme}</p>
-      <button onClick={toggleTheme}>Update Theme</button>
+      <button onClick={() => setUser(user === "Paul" ? "no one" : "Paul")}>
+        Toggle User
+      </button>
     </div>
   );
 }
