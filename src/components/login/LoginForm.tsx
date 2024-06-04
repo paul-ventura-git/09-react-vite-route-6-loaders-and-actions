@@ -9,12 +9,15 @@ export const LoginForm = () => {
   const [user, setUser] = useLoginContext();
   console.log(user);
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({username: "", password: ""});
 
   const handleChange = (event: { target: { name: any; value: any; }; }) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs(values => ({...values, [name]: value}))
+    console.log(name)
+    console.log(value)
+    console.log(inputs)
   }
 
   const handleSubmit = (event: { preventDefault: () => void; }) => {
@@ -40,9 +43,13 @@ export const LoginForm = () => {
     .then((response) => response.text())
     .then((result) => JSON.parse(result))
     .then((data) => {
+      console.log(data)
+      
       const exists = data.some((elem: { email: any; password: any; })=>{
-        //if(inputs.username===elem.email && inputs.password===elem.password){
-          if (inputs===elem.email){
+        if(inputs.username===elem.email && inputs.password===elem.password){
+        //console.log(elem.email)  
+        //console.log(elem.password)  
+        //if (inputs.username===elem.email){
           alert("Logged in successfully!");
           navigate("/home");
           setUser(elem.email);       
@@ -63,10 +70,11 @@ export const LoginForm = () => {
       {/*<Form onSubmit={() => setUser(user === "Paul" ? "no one" : "Paul")}>*/}
       <Form onSubmit={handleSubmit}>
         <label>Username: </label>
-        <input name="username" value="" onChange={handleChange}></input><hr></hr>
+        <input name="username" type="email" onChange={handleChange}></input><hr></hr>
         <label>Password: </label>
-        <input name="password" value="" onChange={handleChange}></input><hr></hr>
-        <button onClick={() => setUser(user === "Paul" ? "no one" : "Paul")}>
+        <input name="password" type="password" autoComplete="on" onChange={handleChange}></input><hr></hr>
+        {/*<button onClick={() => setUser(user === "Paul" ? "no one" : "Paul")}>*/}
+        <button type="submit">
           Toggle User
         </button>
       </Form>
