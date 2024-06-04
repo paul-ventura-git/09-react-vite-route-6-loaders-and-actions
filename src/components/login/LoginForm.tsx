@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Form } from "react-router-dom";
-import { useLoginContext } from "../../context/LoginContext";
+//import { useLoginContext } from "../../context/LoginContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useLoginContext();
-  console.log(user);
+  //const [user, setUser] = useLoginContext();
+  //console.log(user);
 
   const [inputs, setInputs] = useState({username: "", password: ""});
 
@@ -52,7 +52,7 @@ export const LoginForm = () => {
         //if (inputs.username===elem.email){
           alert("Logged in successfully!");
           navigate("/home");
-          setUser(elem.email);       
+          //setUser(elem.email);       
           return true   
         }        
       })
@@ -61,19 +61,16 @@ export const LoginForm = () => {
       }
       return false
     })
-    .catch((error) => console.error(error));
-    
+    .catch((error) => console.error(error));    
   }
 
   return (
     <div>
-      {/*<Form onSubmit={() => setUser(user === "Paul" ? "no one" : "Paul")}>*/}
       <Form onSubmit={handleSubmit}>
         <label>Username: </label>
         <input name="username" type="email" onChange={handleChange}></input><hr></hr>
         <label>Password: </label>
         <input name="password" type="password" autoComplete="on" onChange={handleChange}></input><hr></hr>
-        {/*<button onClick={() => setUser(user === "Paul" ? "no one" : "Paul")}>*/}
         <button type="submit">
           Toggle User
         </button>

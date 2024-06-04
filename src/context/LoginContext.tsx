@@ -21,7 +21,12 @@ export const useLoginContext = () => {
 
 export const LoginProvider = ({ children }: PropsWithChildren<{}>) => {
   const value = useState("");
+  console.log(value)
   return (
-    <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
+    <LoginContext.Provider 
+      value={value}
+    >
+      {children}
+    </LoginContext.Provider>
   );
 };
