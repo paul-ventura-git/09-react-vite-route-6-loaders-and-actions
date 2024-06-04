@@ -19,7 +19,7 @@ import { LoginProvider } from './context/LoginContext'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App />, // Layout
     children: [
       {
         index: true,
@@ -37,16 +37,17 @@ const router = createBrowserRouter([
         loader: editUserLoader,
         action: editUserAction,
       },
+      {
+        path: "/home",
+        element: <HomePage />,
+      }
     ],
   },
   {
     path: "/login",
     element: <LoginForm />,
-  },
-  {
-    path: "/home",
-    element: <HomePage />,
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

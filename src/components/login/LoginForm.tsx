@@ -52,7 +52,8 @@ export const LoginForm = () => {
         //if (inputs.username===elem.email){
           alert("Logged in successfully!");
           navigate("/home");
-          setUser(elem.email);       
+          setUser(elem.email);
+          localStorage.setItem("elem.email", JSON.stringify(elem.email));       
           return true   
         }        
       })
